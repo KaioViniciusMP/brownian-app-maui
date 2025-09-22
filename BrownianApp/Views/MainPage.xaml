@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BrownianApp.ViewModels"
+             x:Class="BrownianApp.Views.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Padding="20" ColumnDefinitions="3*,2*">
+
+        <!-- Gráfico -->
+        <GraphicsView x:Name="graphicsView"
+                      Grid.Column="0"
+                      Drawable="{Binding Drawable}"
+                      HeightRequest="400"
+                      WidthRequest="400"
+                      BackgroundColor="Black" />
+
+        <!-- Inputs -->
+        <VerticalStackLayout Grid.Column="1" Spacing="10">
+            <Label Text="Preço inicial"/>
+            <Entry Text="{Binding PrecoInicial}" Keyboard="Numeric"/>
+
+            <Label Text="Volatilidade média(%)"/>
+            <Entry Text="{Binding Volatilidade}" Keyboard="Numeric"/>
+
+            <Label Text="Retorno médio(%)"/>
+            <Entry Text="{Binding RetornoMedio}" Keyboard="Numeric"/>
+
+            <Label Text="Tempo (dias)"/>
+            <Entry Text="{Binding Tempo}" Keyboard="Numeric"/>
+
+            <Button Text="Gerar simulação"
+                    Command="{Binding GerarSimulacaoCommand}" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

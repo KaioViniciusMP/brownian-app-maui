@@ -24,6 +24,8 @@ namespace BrownianApp.ViewModels
         [RelayCommand]
         private void GerarSimulacao()
         {
+            int seed = (int)(PrecoInicial * 1000 + Volatilidade * 100 + RetornoMedio * 100 + Tempo);
+
             var prices = BrownianModel.GenerateBrownianMotion(
                 Volatilidade / 100.0, // ajustando para percentual
                 RetornoMedio / 100.0,

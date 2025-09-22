@@ -34,13 +34,16 @@ namespace BrownianApp.Drawables
 
             double max = Prices.Max();
             double min = Prices.Min();
+            double range = max - min;
 
             float stepX = width / (Prices.Length - 1);
 
             for (int i = 1; i < Prices.Length; i++)
             {
                 float x1 = (i - 1) * stepX;
-                float y1 = height - (float)((Prices[i - 1] - min) / (max - min) * height);
+
+                if (range == 0) range = 1;
+                float y1 = height - (float)((Prices[i - 1] - min) / range * height);
 
                 float x2 = i * stepX;
                 float y2 = height - (float)((Prices[i] - min) / (max - min) * height);

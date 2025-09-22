@@ -10,7 +10,7 @@ namespace BrownianApp.Models
     {
         public static double[] GenerateBrownianMotion(double sigma, double mean, double initialPrice, int numDays)
         {
-            Random rand = new Random();
+            Random rand = new Random(seed);
             double[] prices = new double[numDays];
             prices[0] = initialPrice;
 

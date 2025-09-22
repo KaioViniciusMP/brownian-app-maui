@@ -14,13 +14,9 @@ namespace BrownianApp.Views
         {
             InitializeComponent();
 
-            if (BindingContext is MainViewModel vm)
-            {
-                vm.Drawable.OnPricesUpdated += () =>
-                {
-                    graphicsView.Invalidate(); // força redesenho
-                };
-            }
+            _vm = BindingContext as MainViewModel;
+            if (_vm != null)
+                _vm.Drawable.OnPricesUpdated += () => graphicsView.Invalidate();
         }
     }
 }

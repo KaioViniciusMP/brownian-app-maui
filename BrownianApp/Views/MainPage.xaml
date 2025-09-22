@@ -9,8 +9,6 @@
     </ContentPage.BindingContext>
 
     <Grid Padding="20" ColumnDefinitions="3*,2*">
-
-        <!-- Gráfico -->
         <GraphicsView x:Name="graphicsView"
                       Grid.Column="0"
                       Drawable="{Binding Drawable}"
@@ -18,7 +16,6 @@
                       WidthRequest="400"
                       BackgroundColor="Black" />
 
-        <!-- Inputs -->
         <VerticalStackLayout Grid.Column="1" Spacing="10">
             <Label Text="Preço inicial"/>
             <Entry Text="{Binding PrecoInicial}" Keyboard="Numeric"/>
@@ -34,6 +31,12 @@
 
             <Button Text="Gerar simulação"
                     Command="{Binding GerarSimulacaoCommand}" />
+
+            <Label Text="Cor da linha"/>
+            <Picker SelectedItem="{Binding LinhaCorSelecionada}" ItemsSource="{Binding CoresDisponiveis}"/>
+
+            <Label Text="Espessura da linha"/>
+            <Slider Minimum="0.5" Maximum="5" Value="{Binding LinhaEspessura}" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

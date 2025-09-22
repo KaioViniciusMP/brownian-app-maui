@@ -19,6 +19,8 @@ namespace BrownianApp.Drawables
                 OnPricesUpdated?.Invoke();
             }
         }
+        public Color StrokeColor { get; set; } = Colors.MediumPurple;
+        public float StrokeSize { get; set; } = 1.5f;
 
         public event Action OnPricesUpdated;
         public void Draw(ICanvas canvas, RectF dirtyRect)
@@ -26,8 +28,8 @@ namespace BrownianApp.Drawables
             if (Prices == null || Prices.Length == 0)
                 return;
 
-            canvas.StrokeColor = Colors.MediumPurple;
-            canvas.StrokeSize = 1.5f;
+            canvas.StrokeColor = StrokeColor;
+            canvas.StrokeSize = StrokeSize;
 
             float width = (float)dirtyRect.Width;
             float height = (float)dirtyRect.Height;

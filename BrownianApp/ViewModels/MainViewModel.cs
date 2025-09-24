@@ -34,8 +34,14 @@ namespace BrownianApp.ViewModels
         };
 
         [RelayCommand]
-        private void GerarSimulacao()
+        private async void GerarSimulacao()
         {
+            if (LinhaCorSelecionada == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Atenção", "Escolha uma cor para o gráfico antes de gerar a simulação.", "OK");
+                return;
+            }
+
             int seed = (int)(PrecoInicial * 1000 + Volatilidade * 100 + RetornoMedio * 100 + Tempo);
 
             var prices = BrownianModel.GenerateBrownianMotion(
